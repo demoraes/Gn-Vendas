@@ -1,0 +1,95 @@
+@import url("font/font.css");
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("../../img/fundoCamuflado.png");
+}
+
+.button {
+  border: 1px solid #fff;
+  padding: 5%;
+  width: 23%;
+  margin-top: 2%;
+  margin-right: 10px;
+  background-color: #4c4a3aff;
+  color: white;
+  border-radius: 3%;
+}
+
+.button:hover{
+  cursor: pointer;
+  background-color: #567749ff;
+}
+
+.ssb-icon {
+  font-size: 190%;
+  margin: 0 0 20px;
+}
+
+h2.ssb-title {
+  font-family: 'Asap Condensed';
+  font-size: 180%;
+  font-weight: 200%;
+  text-transform: uppercase;
+}
+
+img {
+  width: 10%;
+}
+
+.details {
+  font-family: 'Asap Condensed';
+  margin-top: 8%;
+  color: white;
+}
+
+.details i {
+  float: left;
+  margin-right: 10px;
+}
+
+.details tr td {
+  margin-top:10px;
+}
+
+#table_id_usr_wrapper {
+  margin-left: 3.5%;
+}
+
+#table_id_sec_wrapper {
+  margin-left: 3.5%;
+}
+
+.modal-lg {
+  max-width: 80%;
+}
+
+.modal {
+  overflow: auto;
+}
+
+div.dt-buttons {
+  float: left; 
+}
+
+.dataTables_wrapper .dataTables_filter {
+  float: right;
+}
+
+.menu {
+  float: right;
+}
+
+div.dataTables_wrapper div.dataTables_info {
+  float: left;
+}
+
+.dataTables_wrapper .dt-buttons {
+  margin-bottom: 10px;
+} 
