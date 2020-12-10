@@ -35,12 +35,12 @@ $(document).ready(function () {
             data: JSON.stringify({ 'nome': nome, 'valor': valor }),
             url: "http://localhost:3333/produto",
             success: function (data) {
-                var sucesso = data.sucesso;
+                var sucesso = data.nome;
                 if (sucesso) {
-                    $(".addMil").modal('hide');
-                    alert('Militar cadastrado com sucesso');
+                    $(".addProduto").modal('hide');
+                    alert('Produto cadastrado com sucesso');
                 } else {
-                    alert('Militar não cadastrado');
+                    alert('Produto não cadastrado');
                 }
                 $("#table_id_mil").DataTable().ajax.reload();  // insere o dado na tabela do frontend
             },
@@ -58,7 +58,7 @@ $(document).ready(function () {
 
 
     // lista produtos na tabela
-    $('#table_id_mil').DataTable({
+    var table_id_mil = $('#table_id_mil').DataTable({
         ajax: {
             url: 'http://localhost:3333/produto',
             type: 'GET',
@@ -67,18 +67,15 @@ $(document).ready(function () {
             dataSrc: 'data',
         },
         columns: [
-            { sortable: false, data: 'id' },
             { sortable: false, data: 'nome' },
             { sortable: false, data: 'valor' },
-            { sortable: false, data: 'created_at' },
-            { sortable: false, data: 'updated_at' },
             {
                 data: null,
                 sortable: false,
                 render: function (data) {
-                    var editar = "<button value=\"editar\" id=\"editar\" data-toggle=\"modal\" data-target=\"#editMil\" class=\"btn btn-outline-info icone\" value=\"" + data.id + "\" title=\"Editar\"><i class=\"fas fa-user-edit\"></i></button>";
-                    var excluir = "<button value=\"excluir\" style=\"margin-left:10px;\" id=\"excluir\" class=\"btn btn-outline-danger icone\" value=\"" + data.id + "\" title=\"Excluir\"><i class=\"fas fa-user-minus\"></i></button>";
-                    return editar + excluir;
+                    var excluir = "<button style=\"margin-left:10px;\" id=\"excluir\" class=\"btn btn-outline-danger icone\" value=\"" + data.id + "\" title=\"Excluir\"><i class=\"far fa-trash-alt\"></i></button>";
+                    var comprar = "<button value=\"comprar\" style=\"margin-left:10px;\" id=\"comprar\" class=\"btn btn-outline-success icone\" value=\"" + data.id + "\" title=\"Comprar\"><i class=\"fas fa-shopping-cart\"></i></button>";
+                    return excluir + comprar;
                 }
             }
         ],
@@ -103,4 +100,58 @@ $(document).ready(function () {
         },
     });
     /* Neste scopo é feito UPDATE nas tabelas */
+
+
+
+
+    $('#table_id_mil tbody').on('click', 'button', function () {
+        var opt = $(this).attr("id");
+        var obj = $('#table_id_mil').DataTable().row($(this).closest('tr')).data();
+
+        if (opt == 'excluir') {
+            $.ajax({
+                type: "DELETE",
+                datatype: 'html',
+                url: `http://localhost:3333/produto/${obj.id}`,
+                data: { id: obj.id },
+                success: function (data) {
+                    if (data.error) {
+                        alert("Erro");
+                    } else {
+                        alert("Produto deletado");
+                        table_id_mil.ajax.reload();
+                    }
+                }
+            });
+        }
+    });
+
+    // $('#formulario_editProduto').submit(async function (e) {
+    //     e.preventDefault();
+    //     var nome = $("#nome").val();
+    //     var valor = $("#valor").val();
+
+    //     const result = await $.ajax({
+    //         type: "POST",
+    //         dataType: 'JSON',
+    //         contentType: "application/json",
+    //         data: JSON.stringify({ 'nome': nome, 'valor': valor }),
+    //         url: "http://localhost:3333/produto",
+    //         success: function (data) {
+    //             var sucesso = data.nome;
+    //             if (sucesso) {
+    //                 $(".editProduto").modal('hide');
+    //                 alert('Produto cadastrado com sucesso');
+    //             } else {
+    //                 alert('Produto não cadastrado');
+    //             }
+    //             $("#table_id_mil").DataTable().ajax.reload();  // insere o dado na tabela do frontend
+    //         },
+    //         error: function (request, status, error) {
+    //             alert(request.responseText);
+    //         },
+    //     });
+
+    //     return result;
+    // });
 });

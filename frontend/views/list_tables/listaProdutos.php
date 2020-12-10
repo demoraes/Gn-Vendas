@@ -14,11 +14,8 @@
 							<table class="ui celled table" id="table_id_mil" style="width: 100%; margin-bottom:10px;">
 								<thead>
 									<tr>
-										<th style="text-align: center;">Id</th>
 										<th style="text-align: center;">Nome</th>
 										<th style="text-align: center;">Valor</th>
-										<th style="text-align: center;">CreatedAt</th>
-										<th style="text-align: center;">UpdatedAt</th>
 										<th style="text-align: center;">Ação</th>
 									</tr>
 								</thead>

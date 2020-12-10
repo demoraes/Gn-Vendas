@@ -6,6 +6,6 @@ const routes = new Router();
 
 routes.get('/produto', ProdutoControlador.index);
 routes.post('/produto', ProdutoControlador.store);
-routes.put('/produto', ProdutoControlador.update);
+routes.delete('/produto/:id', ProdutoControlador.delete);
 
 export default routes;
