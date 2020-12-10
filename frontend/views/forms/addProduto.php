@@ -8,7 +8,7 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<form id="formulario_addMil">
+				<form id="formulario_addProduto">
 					<div class="card-body">
 						<div class="row">
 							<div class="col-md-6">

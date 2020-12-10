@@ -11,7 +11,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="panel panel-primary filterable" style="width: 100%;">
-							<table class="ui celled table" id="table_id_mil" style="width: 100%; margin-bottom:10px;">
+							<table class="ui celled table" id="table_id_produto" style="width: 100%; margin-bottom:10px;">
 								<thead>
 									<tr>
 										<th style="text-align: center;">Nome</th>
@@ -27,7 +27,7 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-success" data-toggle="modal" data-target="#addMil"><i class="fas fa-plus-circle"></i></button>
+				<button type="button" class="btn btn-success" data-toggle="modal" data-target="#addProduto"><i class="fas fa-plus-circle"></i></button>
 			</div>
 		</div>
 	</div>

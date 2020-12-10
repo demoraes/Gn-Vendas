@@ -1,28 +1,38 @@
 $(document).ready(function () {
 
     // adicionando mascaras nos inputs
-
-    $("#idt").mask("0000000000-0");
-    $("#telefone").mask("(99) 9999-9999");
-    $("#celular").mask("(99) 9999-9999");
+ 
+    $("#valor").mask("0000000000");
+    $('#nome').mask('SSSSSSSSSS');
 
 
     // No codigo abaixo são feitas as validações nos campos obrigatorios
-    $("#formulario_addMil").validate({
+    $("#formulario_addProduto").validate({
         debug: true,
-        highlight: function (element) {
-            $(element).css('border-color', '#ff0000');
+        rules: {
+            nome: {
+                required: true,
+                minlength: 3,
+                maxlength: 10,
+            },
+            valor: {
+                minlength: 3,
+                maxlength: 10,
+            },
+
         },
-        errorPlacement: function (error, element) {
-            return false;
-        },
+        messages: {
+            nome: "Somente letras",
+            valor: "Somente numeros",
+        }
+
     });
     /// Fim da validação dos formularios ///
 
 
 
     // Inserção de dados no banco
-    $('#formulario_addMil').submit(async function (e) {
+    $('#formulario_addProduto').submit(async function (e) {
         e.preventDefault();
         //var formulario = $(this).serialize();
         var nome = $("#nome").val();
@@ -39,13 +49,11 @@ $(document).ready(function () {
                 if (sucesso) {
                     $(".addProduto").modal('hide');
                     alert('Produto cadastrado com sucesso');
-                } else {
-                    alert('Produto não cadastrado');
                 }
-                $("#table_id_mil").DataTable().ajax.reload();  // insere o dado na tabela do frontend
+                $("#table_id_produto").DataTable().ajax.reload();  // insere o dado na tabela do frontend
             },
             error: function (request, status, error) {
-                alert(request.responseText);
+                alert('Produto não cadastrado');
             },
         });
 
@@ -58,7 +66,7 @@ $(document).ready(function () {
 
 
     // lista produtos na tabela
-    var table_id_mil = $('#table_id_mil').DataTable({
+    var table_id_produto = $('#table_id_produto').DataTable({
         ajax: {
             url: 'http://localhost:3333/produto',
             type: 'GET',
@@ -99,14 +107,11 @@ $(document).ready(function () {
             },
         },
     });
-    /* Neste scopo é feito UPDATE nas tabelas */
 
 
-
-
-    $('#table_id_mil tbody').on('click', 'button', function () {
+    $('#table_id_produto tbody').on('click', 'button', function () {
         var opt = $(this).attr("id");
-        var obj = $('#table_id_mil').DataTable().row($(this).closest('tr')).data();
+        var obj = $('#table_id_produto').DataTable().row($(this).closest('tr')).data();
 
         if (opt == 'excluir') {
             $.ajax({
@@ -119,7 +124,7 @@ $(document).ready(function () {
                         alert("Erro");
                     } else {
                         alert("Produto deletado");
-                        table_id_mil.ajax.reload();
+                        table_id_produto.ajax.reload();
                     }
                 }
             });
