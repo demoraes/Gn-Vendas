@@ -19,6 +19,7 @@
 										<th style="text-align: center;">Valor</th>
 										<th style="text-align: center;">CreatedAt</th>
 										<th style="text-align: center;">UpdatedAt</th>
+										<th style="text-align: center;">Ação</th>
 									</tr>
 								</thead>
 								<tbody>

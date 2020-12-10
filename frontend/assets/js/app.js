@@ -22,16 +22,17 @@ $(document).ready(function () {
 
 
     // Inserção de dados no banco
-    $('#formulario_addMil').submit(function (e) {
+    $('#formulario_addMil').submit(async function (e) {
         e.preventDefault();
-        var formulario = $(this).serialize();
-       
+        //var formulario = $(this).serialize();
+        var nome = $("#nome").val();
+        var valor = $("#valor").val();
 
-
-        $.ajax({
+        const result = await $.ajax({
             type: "POST",
             dataType: 'JSON',
-            data: JSON.stringify(formulario),
+            contentType: "application/json",
+            data: JSON.stringify({ 'nome': nome, 'valor': valor }),
             url: "http://localhost:3333/produto",
             success: function (data) {
                 var sucesso = data.sucesso;
@@ -47,6 +48,8 @@ $(document).ready(function () {
                 alert(request.responseText);
             },
         });
+
+        return result;
     });
 
     /// Fim da inserção de dados no banco ///
@@ -54,11 +57,12 @@ $(document).ready(function () {
 
 
 
-    // lista militares na tabela de militares
-    var tableMil = $('#table_id_mil').DataTable({
+    // lista produtos na tabela
+    $('#table_id_mil').DataTable({
         ajax: {
             url: 'http://localhost:3333/produto',
             type: 'GET',
+            contentType: "application/json",
             dataType: 'json',
             dataSrc: 'data',
         },
@@ -66,8 +70,17 @@ $(document).ready(function () {
             { sortable: false, data: 'id' },
             { sortable: false, data: 'nome' },
             { sortable: false, data: 'valor' },
-            { sortable: false, data: 'createdAt' },
-            { sortable: false, data: 'updatedAt' },
+            { sortable: false, data: 'created_at' },
+            { sortable: false, data: 'updated_at' },
+            {
+                data: null,
+                sortable: false,
+                render: function (data) {
+                    var editar = "<button value=\"editar\" id=\"editar\" data-toggle=\"modal\" data-target=\"#editMil\" class=\"btn btn-outline-info icone\" value=\"" + data.id + "\" title=\"Editar\"><i class=\"fas fa-user-edit\"></i></button>";
+                    var excluir = "<button value=\"excluir\" style=\"margin-left:10px;\" id=\"excluir\" class=\"btn btn-outline-danger icone\" value=\"" + data.id + "\" title=\"Excluir\"><i class=\"fas fa-user-minus\"></i></button>";
+                    return editar + excluir;
+                }
+            }
         ],
         language: {
             "sEmptyTable": "Nenhum registro encontrado",
@@ -87,9 +100,6 @@ $(document).ready(function () {
                 "sFirst": "Primeiro",
                 "sLast": "Último"
             },
-            buttons: {
-                colvis: 'Ocultar Colunas'
-            }
         },
     });
     /* Neste scopo é feito UPDATE nas tabelas */

@@ -6,8 +6,8 @@ function getConnection()
 {
 
 	$dsn = 'mysql:host=localhost;dbname=gn-vendas';
-	$user = 'root';
-	$pass = 'lapqow01';
+	$user = 'suporte';
+	$pass = 'l30p@rd0';
 
 	try {
 		$pdo = new PDO($dsn, $user, $pass);
