@@ -30,7 +30,7 @@ class ProductController {
       valor: Yup.string().required(),
     });
 
-    console.log(req.body);
+    // console.log(req.body);
 
     if (!(await schema.isValid(req.body))) {
       return res.status(400).json({ error: 'Validação falhou' });
