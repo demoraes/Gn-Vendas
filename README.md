@@ -3,7 +3,6 @@
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 - [Node.js](https://nodejs.org/en/)
-- [PHP](https://www.php.net/manual/pt_BR/intro-whatis.php)
 - [JQUERY](https://jquery.com/)
 
 
