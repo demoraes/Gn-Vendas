@@ -19,7 +19,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
     1 - Backend
     2 - Frontend
 
-  <b>O Frontend e o mobile precisam que o backend esteja rodando.</b>
+  <b>O Frontend precisa que o backend esteja rodando.</b>
 
 ### Pré-requisitos
 
@@ -55,9 +55,7 @@ $ yarn dev
 
 ### 🧭 Rodando o Frontend
 
-### Pré-requisitos para rodar frontend
-
-Você precisara ter o apache instalado em sua maquina para que seja possivel renderizar a pagina.
+Você precisara ter o apache e o php instalado para que seja possivel renderizar a pagina.
 
 ## 🤔 Como contribuir
 
