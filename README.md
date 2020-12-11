@@ -57,9 +57,9 @@ $ yarn dev
 ### 🧭 Rodando o Frontend
 
 - Você precisara ter o apache e o php instalado para que seja possivel renderizar a pagina.
-- Logo após a instalação desses serviços é necessario mudar o dono do diretório com o seguintes comandos abaixo.
+- Logo após a instalação desses serviços é necessario seguir os passos abaixo.
   - A pasta do projeto precisa estar necessariamente na pasta /var/www/html/, nesse caso o apache utiliza esse diretório, isso pode mudar se você estiver utilizando outro servidor web.
-  - chown -R www-data.www-data frontend
+  - Mude o dono da pasta do projeto com o seguinte comando: chown -R www-data.www-data frontend
 
 ## 🤔 Como contribuir
 
