@@ -8,23 +8,24 @@
 }
 
 body {
-  background-image: url("../../img/fundoCamuflado.png");
+  background-color: rgb(240, 240, 240);
 }
 
 .button {
   border: 1px solid #fff;
-  padding: 5%;
-  width: 23%;
-  margin-top: 2%;
-  margin-right: 10px;
-  background-color: #4c4a3aff;
+  padding: 50px;
+  width: 20%;
+  height: 20%;
+  margin:10% auto;
+  background-color: rgb(225, 167, 128);
   color: white;
   border-radius: 3%;
+  transition: 0.2s;
 }
 
 .button:hover{
   cursor: pointer;
-  background-color: #567749ff;
+  background-color:rgb(196, 145, 111);
 }
 
 .ssb-icon {

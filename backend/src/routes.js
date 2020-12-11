@@ -11,6 +11,6 @@ routes.post('/produto', ProdutoControlador.store);
 routes.delete('/produto/:id', ProdutoControlador.delete);
 
 // Compra do produto
-routes.get('/compra', CompraProdutoControlador.store);
+routes.post('/compra', CompraProdutoControlador.store);
 
 export default routes;

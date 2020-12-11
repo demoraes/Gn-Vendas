@@ -7,5 +7,6 @@
 
       <?php require_once("list_tables/listaProdutos.php"); ?>
       <?php require_once("forms/addProduto.php"); ?>
+      <?php require_once("forms/compra.php"); ?>
     </div>
   </div>

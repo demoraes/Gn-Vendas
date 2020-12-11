@@ -13,7 +13,7 @@ class ProductController {
 
     const data = await Produto.findAll({
       where,
-      attributes: ['id', 'nome', 'valor'],
+      attributes: ['id', 'nome_produto', 'valor'],
     });
 
     return res.json({
@@ -26,7 +26,7 @@ class ProductController {
 
   async store(req, res) {
     const schema = Yup.object().shape({
-      nome: Yup.string().required(),
+      nome_produto: Yup.string().required(),
       valor: Yup.string().required(),
     });
 
@@ -37,17 +37,17 @@ class ProductController {
     }
 
     const produtoExiste = await Produto.findOne({
-      where: { nome: req.body.nome },
+      where: { nome_produto: req.body.nome_produto },
     });
 
     if (produtoExiste) {
       return res.status(400).json({ error: 'Produto já existe' });
     }
 
-    const { nome, valor } = await Produto.create(req.body);
+    const { nome_produto, valor } = await Produto.create(req.body);
 
     return res.json({
-      nome,
+      nome_produto,
       valor,
     });
   }

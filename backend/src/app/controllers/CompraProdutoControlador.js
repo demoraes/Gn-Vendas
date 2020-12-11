@@ -12,14 +12,16 @@ const options = {
 
 class ProdutoCompraControlador {
   async store(req, res) {
-    const { nome_empresa, cpf, telefone, nome_produto, valor } = req.body;
+    const { nome, cpf, telefone, nome_produto, valor } = req.body;
+
+    console.log(req.body);
 
     const compra = {
       payment: {
         banking_billet: {
           expire_at: '2021-06-12',
           customer: {
-            name: nome_empresa,
+            name: nome,
             cpf,
             phone_number: telefone,
           },

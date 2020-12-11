@@ -14,7 +14,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="bmd-label-floating">Nome do Produto</label>
-									<input type="text" class="form-control" name="nome" id="nome" required>
+									<input type="text" class="form-control" name="nome_produto" id="nome_produto" required>
 								</div>
 							</div>
 							<div class="col-md-6">
